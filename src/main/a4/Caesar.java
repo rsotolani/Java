@@ -20,6 +20,11 @@ public class Caesar {
      * @return Encrypted message
      */
     public String encode(String message, int shift) {
+        
+        if (!message.matches("[A-Za-z ]*")) {
+            throw new IllegalArgumentException("Message contains invalid characters. Only Latin letters and spaces are allowed.");
+        }
+        
         StringBuilder encoded = new StringBuilder();
 
         final char shiftChar = normalizeShift(shift);
@@ -51,6 +56,10 @@ public class Caesar {
      * @return message
      */
     public String decode(String encryptedMessage, int shift) {
+        if (!encryptedMessage.matches("[A-Za-z ]*")) {
+            throw new IllegalArgumentException("Encrypted message contains invalid characters. Only Latin letters and spaces are allowed.");
+        }
+        
         StringBuilder decoded = new StringBuilder();
 
         final char shiftChar = normalizeShift(shift);

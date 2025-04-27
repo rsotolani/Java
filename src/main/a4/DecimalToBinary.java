@@ -14,8 +14,13 @@ final class DecimalToBinary {
      * Converts a decimal number to a binary number using a conventional algorithm.
      * @param decimalNumber the decimal number to convert
      * @return the binary representation of the decimal number
+     * @throws IllegalArgumentException if the decimalNumber is negative
      */
     public static int convertUsingConventionalAlgorithm(int decimalNumber) {
+        if (decimalNumber < 0) {
+            throw new IllegalArgumentException("Negative numbers are not supported.");
+        }
+        
         int binaryNumber = 0;
         int position = 1;
 
@@ -33,8 +38,13 @@ final class DecimalToBinary {
      * Converts a decimal number to a binary number using a bitwise algorithm.
      * @param decimalNumber the decimal number to convert
      * @return the binary representation of the decimal number
+     * @throws IllegalArgumentException if the decimalNumber is negative
      */
     public static int convertUsingBitwiseAlgorithm(int decimalNumber) {
+        if (decimalNumber < 0) {
+            throw new IllegalArgumentException("Negative numbers are not supported.");
+        }
+
         int binaryNumber = 0;
         int position = 1;
 

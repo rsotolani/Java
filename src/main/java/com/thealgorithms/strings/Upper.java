@@ -22,7 +22,7 @@ public final class Upper {
      */
     public static String toUpperCase(String s) {
         if (s == null) {
-            throw new IllegalArgumentException("Input string connot be null");
+            throw new IllegalArgumentException("Input string cannot be null");
         }
         if (s.isEmpty()) {
             return s;

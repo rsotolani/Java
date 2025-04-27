@@ -1,8 +1,8 @@
 package com.thealgorithms.searches;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.stream.IntStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**

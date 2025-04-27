@@ -1,7 +1,7 @@
 package com.thealgorithms.ciphers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 class CaesarTest {
@@ -33,14 +33,28 @@ class CaesarTest {
     }
 
     @Test
-    void caesarBruteForce() {
+    void caesarEncryptWithInvalidCharacter() {
         // given
-        String encryptedText = "Jshwduy ymnx yjcy";
+        String textToEncrypt = "Hello! How are you?"; // Contém "!" e "?"
 
-        // when
-        String[] allPossibleAnswers = caesar.bruteforce(encryptedText);
+        // when & then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            caesar.encode(textToEncrypt, 3);
+        });
 
-        assertEquals(27, allPossibleAnswers.length);
-        assertEquals("Encrypt this text", allPossibleAnswers[5]);
+        assertEquals("Message contains invalid characters. Only Latin letters and spaces are allowed.", exception.getMessage());
+    }
+
+    @Test
+    void caesarDecryptWithInvalidCharacter() {
+        // given
+        String encryptedText = "Khoor! Jqw ctg aqw?"; // Contém "!" e "?"
+
+        // when & then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            caesar.decode(encryptedText, 3);
+        });
+
+        assertEquals("Encrypted message contains invalid characters. Only Latin letters and spaces are allowed.", exception.getMessage());
     }
 }
